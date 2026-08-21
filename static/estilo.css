@@ -1,0 +1,406 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5ede4;
+    color: #3e2c1b;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 40px;  /* Aumentado padding lateral para mais espaço */
+    background-color: #faf6f0;
+    box-shadow: 0 0 20px rgba(62, 44, 27, 0.1);
+    min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: linear-gradient(135deg, #6b4c3b, #4a3228);
+    color: #f5ede4;
+    padding: 30px 35px;  /* Aumentado padding */
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 35px;
+    box-shadow: 0 4px 6px rgba(62, 44, 27, 0.2);
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: #f5ede4;
+    padding-left: 5px;  /* Pequeno ajuste */
+}
+
+/* ===== NAVEGAÇÃO ===== */
+nav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding-left: 5px;
+}
+
+nav a {
+    color: #e8d5c4;
+    text-decoration: none;
+    padding: 8px 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+nav a.destaque {
+    background-color: #c0392b;
+    color: white;
+}
+
+nav a.destaque:hover {
+    background-color: #e74c3c;
+}
+
+/* ===== TÍTULOS ===== */
+h2 {
+    color: #4a3228;
+    font-size: 24px;
+    margin-bottom: 25px;
+    padding: 0 10px 10px 10px;  /* Adicionado padding lateral */
+    border-bottom: 3px solid #d4c5b2;
+    font-weight: 600;
+}
+
+/* ===== PARÁGRAFOS ===== */
+p {
+    padding: 0 10px;  /* Adicionado padding lateral */
+    color: #3e2c1b;
+}
+
+/* ===== LISTA DE PRODUTOS ===== */
+ul {
+    list-style: none;
+    padding: 0 10px;  /* Adicionado padding lateral */
+}
+
+li {
+    background-color: #fffcf8;
+    padding: 18px 25px;  /* Aumentado padding lateral */
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border-left: 5px solid #8b6b4f;
+    box-shadow: 0 2px 4px rgba(62, 44, 27, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: all 0.3s ease;
+    gap: 10px;  /* Espaço entre os elementos */
+}
+
+li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(62, 44, 27, 0.15);
+    border-left-color: #6b4c3b;
+}
+
+/* ===== INFORMAÇÕES DO PRODUTO ===== */
+.produto-info {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 15px;  /* Espaçamento entre os elementos */
+}
+
+.produto-nome {
+    font-weight: 600;
+    color: #3e2c1b;
+    font-size: 16px;
+}
+
+.produto-preco {
+    color: #6b4c3b;
+    font-weight: 500;
+}
+
+.produto-estoque {
+    color: #8b7355;
+    font-size: 14px;
+    background-color: #f5ede4;
+    padding: 2px 12px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+/* ===== ETIQUETAS ===== */
+.tag {
+    display: inline-block;
+    padding: 3px 14px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.tag-caros {
+    background-color: #c0392b;
+    color: white;
+}
+
+.tag-esgotado {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.tag-baixo-estoque {
+    background-color: #e67e22;
+    color: white;
+}
+
+/* ===== BOTÃO DELETAR ===== */
+.btn-deletar {
+    background-color: #a0522d;
+    color: white;
+    border: none;
+    padding: 8px 20px;  /* Aumentado padding */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;  /* Impede quebra de linha */
+    min-width: 90px;  /* Largura mínima */
+}
+
+.btn-deletar:hover {
+    background-color: #8b4513;
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(160, 82, 45, 0.4);
+}
+
+.btn-deletar:active {
+    transform: scale(0.95);
+}
+
+/* ===== FORMULÁRIO ===== */
+form {
+    background-color: #fffcf8;
+    padding: 30px 35px;  /* Aumentado padding */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(62, 44, 27, 0.08);
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #4a3228;
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    border: 2px solid #d4c5b2;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background-color: #faf6f0;
+    color: #3e2c1b;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #8b6b4f;
+    box-shadow: 0 0 0 3px rgba(139, 107, 79, 0.2);
+    background-color: #ffffff;
+}
+
+input[type="text"]:hover,
+input[type="number"]:hover {
+    border-color: #a0806a;
+}
+
+input small {
+    display: block;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    color: #8b7355;
+    font-size: 12px;
+    padding-left: 5px;
+}
+
+/* ===== BOTÃO CADASTRAR ===== */
+.btn-cadastrar {
+    background: linear-gradient(135deg, #6b4c3b, #4a3228);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-cadastrar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 50, 40, 0.4);
+    background: linear-gradient(135deg, #7a5a48, #4a3228);
+}
+
+.btn-cadastrar:active {
+    transform: translateY(0);
+}
+
+/* ===== MENSAGENS ===== */
+.erro {
+    background-color: #fde8e8;
+    border-left: 5px solid #c0392b;
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    color: #922b21;
+    margin: 0 10px 20px 10px;  /* Margem lateral */
+}
+
+.sucesso {
+    background-color: #e8f5e9;
+    border-left: 5px solid #2e7d32;
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    color: #1b5e20;
+    margin: 0 10px 20px 10px;
+}
+
+/* ===== LINKS ===== */
+a.link-voltar {
+    display: inline-block;
+    margin: 20px 10px;  /* Adicionado margem lateral */
+    color: #6b4c3b;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 20px;
+    border-radius: 6px;
+    background-color: #f5ede4;
+}
+
+a.link-voltar:hover {
+    background-color: #6b4c3b;
+    color: white;
+    transform: translateX(-3px);
+}
+
+/* ===== INFO EXTRA ===== */
+.info-extra {
+    margin: 20px 10px;  /* Adicionado margem lateral */
+    padding: 15px 20px;
+    background-color: #f5ede4;
+    border-radius: 8px;
+    color: #5d4a37;
+    font-size: 14px;
+    border-left: 4px solid #8b6b4f;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px 20px;
+    }
+
+    header {
+        padding: 20px 25px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        text-align: center;
+        padding: 10px;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 18px 20px;
+    }
+
+    .produto-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .btn-deletar {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    h2 {
+        padding: 0 5px 10px 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px 12px;
+    }
+
+    header {
+        padding: 15px 18px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    li {
+        padding: 15px;
+    }
+
+    .produto-info {
+        font-size: 14px;
+    }
+
+    .btn-deletar {
+        font-size: 13px;
+        padding: 8px;
+    }
+}

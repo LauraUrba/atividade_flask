@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+    <h2>Produtos Caros (acima de R$ 100)</h2>
+
+    {% if produtos %}
+        <ul>
+            {% for produto in produtos %}
+                <li>
+                    {{ produto.nome }} - R$ {{ "%.2f"|format(produto.preco) }}
+                    {% if produto.preco > 100 %}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum produto encontrado.</p>
+    {% endif %}
+
+{% endblock %}

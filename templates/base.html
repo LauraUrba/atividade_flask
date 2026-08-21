@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Produtos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+    <header>
+        <h1> Catálogo de Produtos</h1>
+
+        <nav>
+            <a href="{{ url_for ('index') }}">Início</a>
+            <a href="{{ url_for ('novo') }}">Cadastrar Produtos</a>
+            <a href="{{ url_for ('sobre') }}">Sobre</a>
+            <a href="{{ url_for ('caros') }}">Produtos Caros</a>
+        </nav>
+    </header>
+    <main>
+    {% block conteudo %}{% endblock %}
+    </main>
+</body>
+</html>
