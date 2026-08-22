@@ -3,22 +3,59 @@
 
     <h2>Produtos Cadastrados</h2>
 
+    <div class="info-visitas">
+        <i class="bi bi-eye"></i> Esta página foi visitada {{ visitas }} vez(es).
+    </div>
+
+
+    <div class="visitante-container">
+        {% if nome_visitante %}
+            <div class="visitante-saudacao">
+                <i class="bi bi-person-check"></i> Bem-vindo de volta, <strong>{{ nome_visitante }}</strong>!
+                <a href="{{ url_for('esquecer') }}" class="esquecer-link">(esquecer)</a>
+            </div>
+        {% else %}
+            <form method="POST" class="visitante-form">
+                <label for="nome_visitante">Como podemos te chamar?</label>
+                <div class="visitante-input-group">
+                    <input type="text" id="nome_visitante" name="nome_visitante" placeholder="Digite seu nome" value="{{ nome_visitante or '' }}">
+                    <button type="submit" class="btn-salvar">Salvar</button>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+
     {% if produtos %}
         <ul>
             {% for produto in produtos %}
                 <li>
-                    {{ produto.nome }} - R$ {{ "%.2f"|format(produto.preco) }}
-                    {% if produto.preco > 100 %}
-                        <strong style="color: #5d2903;">(acima de R$ 100)</strong>
-                    {% endif %}
-                   <span class="produto-estoque">- Estoque: {{ produto.estoque }} unidades</span>
-                    <form method="POST" action="{{ url_for('remover', nome_produto=produto.nome) }}">
-                    <button type="submit" class="btn-deletar">Deletar</button>
-                </form>
+                    <div class="produto-info">
+                        <span class="produto-nome">{{ produto.nome }}</span>
+                        <span class="produto-categoria">({{ produto.categoria }})</span>
+                        <span class="produto-preco">- R$ {{ "%.2f"|format(produto.preco) }}</span>
+
+                        {% if produto.preco > 100 %}
+                            <span class="tag-acima-100">🔸 Acima de R$ 100</span>
+                        {% endif %}
+
+                        <span class="produto-estoque"> º| Estoque: {{ produto.estoque }} unidades</span>
+
+                    </div>
+
+                    <form method="POST" action="{{ url_for('remover', nome_produto=produto.nome) }}"
+                          style="display: inline;"
+                          onsubmit="return confirm('Tem certeza que deseja remover o produto "{{ produto.nome }}"?');">
+                        <button type="submit" class="btn-deletar"> Deletar</button>
+                    </form>
                 </li>
             {% endfor %}
         </ul>
+
+        <div class="info-extra">
+            <i class="bi bi-box"></i> Total de produtos: <strong>{{ produtos|length }}</strong>
+        </div>
     {% else %}
-        <p>Nenhum Produto cadastrado ainda.</p>
+        <p class="sem-produtos">Nenhum Produto cadastrado ainda.</p>
     {% endif %}
+
 {% endblock %}
