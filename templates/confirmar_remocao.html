@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<h2>Confirmar Remoção</h2>
+
+<div class="confirmacao-box">
+    <p class="confirmacao-mensagem">
+        <i class="bi bi-exclamation-triangle"></i>
+        Tem certeza que deseja remover o produto <strong>"{{ produto.nome }}"</strong>?
+    </p>
+
+    <div class="produto-detalhes-remocao">
+        <p><strong>Nome:</strong> {{ produto.nome }}</p>
+        <p><strong>Preço:</strong> R$ {{ "%.2f"|format(produto.preco) }}</p>
+        <p><strong>Estoque:</strong> {{ produto.estoque }} unidades</p>
+        <p><strong>Categoria:</strong> {{ produto.categoria }}</p>
+        <p><strong>Descrição:</strong> {{ produto.descricao }}</p>
+    </div>
+
+    <div class="botoes-remocao">
+        <form method="POST" action="{{ url_for('deletar_produto', produto_id=produto.id) }}">
+            <button type="submit" class="btn-remover-confirmar">
+                <i class="bi bi-check-circle"></i> Sim, remover produto
+            </button>
+        </form>
+
+        <a href="{{ url_for('index') }}" class="btn-cancelar-remocao">
+            <i class="bi bi-x-circle"></i> Cancelar
+        </a>
+    </div>
+</div>
+
+{% endblock %}

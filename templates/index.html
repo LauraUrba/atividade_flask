@@ -7,6 +7,20 @@
         <i class="bi bi-eye"></i> Esta página foi visitada {{ visitas }} vez(es).
     </div>
 
+    <!-- LINKS DE ORDENAÇÃO -->
+    <div class="ordenacao">
+        <span>Ordenar por preço:</span>
+        <a href="{{ url_for('index', ordem='menor') }}" class="btn-ordem {% if ordem == 'menor' %}ativo{% endif %}">
+            <i class="bi bi-arrow-up"></i> Menor para Maior
+        </a>
+        <a href="{{ url_for('index', ordem='maior') }}" class="btn-ordem {% if ordem == 'maior' %}ativo{% endif %}">
+            <i class="bi bi-arrow-down"></i> Maior para Menor
+        </a>
+        <a href="{{ url_for('index') }}" class="btn-ordem {% if not ordem %}ativo{% endif %}">
+            <i class="bi bi-arrow-repeat"></i> Ordem Padrão
+        </a>
+    </div>
+
 
     <div class="visitante-container">
         {% if nome_visitante %}
@@ -30,8 +44,8 @@
             {% for produto in produtos %}
                 <li>
                     <div class="produto-info">
-                        <span class="produto-nome">{{ produto.nome }}</span>
-                        <span class="produto-categoria">({{ produto.categoria }})</span>
+                        <a href="{{ url_for('detalhe_produto', produto_id=produto.id) }}">{{ produto.nome }}</a>
+                        ({{ produto.categoria }})
                         <span class="produto-preco">- R$ {{ "%.2f"|format(produto.preco) }}</span>
 
                         {% if produto.preco > 100 %}
@@ -42,11 +56,11 @@
 
                     </div>
 
-                    <form method="POST" action="{{ url_for('remover', nome_produto=produto.nome) }}"
-                          style="display: inline;"
-                          onsubmit="return confirm('Tem certeza que deseja remover o produto "{{ produto.nome }}"?');">
-                        <button type="submit" class="btn-deletar"> Deletar</button>
-                    </form>
+                    <a href="{{ url_for('confirmar_remocao', produto_id=produto.id) }}" class="btn-remover">
+                        <i class="bi bi-trash"></i> Remover
+                    </a>
+
+                    <a href="{{ url_for('editar_produto', produto_id=produto.id) }}"> Editar </a>
                 </li>
             {% endfor %}
         </ul>
