@@ -8,7 +8,6 @@ app = Flask(__name__)
 '''cria aplicação "__name__" e informa onde o arquivo esta localizado,
  aleḿ de encontrar outros arquivos de projeto, como os templates'''
 
-# CORRIGIDO: URL -> URI (configuração correta)
 app.config["SQLALCHEMY_DATABASE_URI"] = (
     "mysql+pymysql://laura:Laura0601!@127.0.0.1/catalogo_produtos"
 )
@@ -32,19 +31,19 @@ def popular_banco():
     if Produto.query.count() == 0:
         db.session.add(Produto(
             nome="Mouse", preco=49.90,
-            estoque=20,  # ✅ Adicionado
+            estoque=20, 
             categoria="Acessórios",
             descricao="Mouse óptico com fio.",
         ))
         db.session.add(Produto(
             nome="Teclado", preco=120.00,
-            estoque=52,  # ✅ Adicionado
+            estoque=52, 
             categoria="Acessórios",
             descricao="Teclado mecânico ABNT2.",
         ))
         db.session.add(Produto(
             nome="Monitor", preco=800.00,
-            estoque=50,  # ✅ Adicionado
+            estoque=50, 
             categoria="Informática",
             descricao="Monitor de 24 polegadas.",
         ))
@@ -116,7 +115,7 @@ def index():
                                          produtos=produtos,
                                          nome_visitante=request.cookies.get("visitante"),
                                          visitas=visitas,
-                                         ordem=ordem))  # Passar ordem para o template
+                                         ordem=ordem)) 
 
     resp.set_cookie("visitas", str(visitas), max_age=60 * 60 * 24 * 30)
     return resp
