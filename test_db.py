@@ -1,3 +1,4 @@
+#teste se esta funcionando o bando de dados por conta de erros que estava acontecendo durante o processo
 import pymysql
 
 try:
@@ -7,8 +8,8 @@ try:
         password='Laura0601!',
         database='catalogo_produtos'
     )
-    print("✅ Conexão bem sucedida!")
+    print("Conexão bem sucedida!")
     print("Usuário laura conectado com sucesso!")
     connection.close()
 except Exception as e:
-    print(f"❌ Erro: {e}")
+    print(f"Erro: {e}")
